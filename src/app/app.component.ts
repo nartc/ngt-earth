@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgtCanvas } from 'angular-three';
 import { Experience } from './experience/experience.component';
+
 @Component({
 	selector: 'app-root',
 	standalone: true,
@@ -13,5 +14,4 @@ import { Experience } from './experience/experience.component';
 })
 export class AppComponent {
 	scene = Experience;
-	title = 'ngt-earth';
 }

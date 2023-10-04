@@ -1,0 +1,13 @@
+<div class="ticker">
+	<div class="ticker-lines">
+		<ng-container *ngFor="let hatch of HATCHES_ALL">
+			<div *ngIf="hatch - 12 === 0; else hour" class="special"></div>
+			<ng-template #hour>
+				<div *ngIf="hatch % 6 === 0; else normal" class="hour"></div>
+				<ng-template #normal>
+					<div></div>
+				</ng-template>
+			</ng-template>
+		</ng-container>
+	</div>
+</div>
