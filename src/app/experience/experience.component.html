@@ -1,4 +1,5 @@
-<ngt-mesh (beforeRender)="onBeforeRender($event)">
-	<ngt-box-geometry />
-	<ngt-mesh-basic-material color="hotpink" />
-</ngt-mesh>
+<app-earth-day />
+<app-lights [sunCoordsRef]="sunCoordsRef" />
+<app-earth-night />
+<app-clouds />
+<app-halo color="#7da4ff" />

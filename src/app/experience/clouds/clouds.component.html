@@ -1,0 +1,35 @@
+<ngt-mesh
+	[position]="[0, 0, 0]"
+	[scale]="1.001"
+	[receiveShadow]="true"
+	(beforeRender)="onBeforeRender($event.object)"
+>
+	<ngt-sphere-geometry
+		*args="[EARTH_RADIUS, EARTH_FRAGMENTS, EARTH_FRAGMENTS]"
+	/>
+	<ngt-mesh-standard-material
+		[map]="cloudsMap()"
+		[transparent]="true"
+		[opacity]="0.5"
+		color="#ffffff"
+	/>
+</ngt-mesh>
+<!-- //       <mesh -->
+<!-- //         ref={meshRef} -->
+<!-- //         position={[0, 0, 0]} -->
+<!-- //         scale={[1.001, 1.001, 1.001]} -->
+<!-- //         // layers={1} -->
+<!-- //         receiveShadow -->
+<!-- //       > -->
+<!-- //         <sphereGeometry -->
+<!-- //           args={[EARTH_RADIUS, EARTH_FRAGMENTS, EARTH_FRAGMENTS]} -->
+<!-- //         /> -->
+<!-- //         <meshStandardMaterial -->
+<!-- //           map={cloudsMap} -->
+<!-- //           // alphaMap={cloudsMap} -->
+<!-- //           // alphaTest={0} -->
+<!-- //           transparent -->
+<!-- //           opacity={0.5} -->
+<!-- //           color="#ffffff" -->
+<!-- //         /> -->
+<!-- //       </mesh> -->

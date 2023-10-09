@@ -1,8 +1,172 @@
 /* You can add global styles to this file, and also import other style files */
-html,
-body {
-	height: 100%;
-	width: 100%;
-	margin: 0;
+* {
 	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+	width: 100vw;
+	height: 100vh;
+	min-width: 300px;
+	min-height: 600px;
+	background-color: #010323;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+@media (max-width: 768px) {
+	.wrapper {
+		flex-direction: column;
+	}
+}
+
+.scene {
+	flex: 1;
+	position: relative;
+}
+
+.globe {
+	position: absolute;
+	width: 100%;
+	height: calc(100% + 40px);
+	top: 0;
+	left: 0;
+	margin: auto;
+}
+
+.controls {
+	flex: 0 0 100px;
+	position: relative;
+	/* border-left: 1px solid rgba(255, 255, 255, 0.2); */
+}
+
+.controls-outer {
+	position: relative;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	font-size: 48px;
+	color: white;
+}
+
+.ticker-controls {
+	position: absolute;
+	display: block;
+	bottom: 0;
+	top: 0;
+	right: 0;
+	margin: auto;
+	height: 200px;
+	width: 100%;
+	overflow: hidden;
+	user-select: none;
+	cursor: grab;
+	pointer-events: all;
+	z-index: 9;
+	transition: all 200ms;
+	touch-action: none;
+}
+
+.ticker-cover {
+	height: 100%;
+	position: absolute;
+	pointer-events: none;
+	left: 0;
+	width: 50%;
+	min-width: 100px;
+	background-image: linear-gradient(to right, #010323, #01032300);
+	z-index: 1;
+}
+
+.ticker-cover + .ticker-cover {
+	left: auto;
+	right: 0;
+	margin: auto;
+	background-image: linear-gradient(to left, #010323, #01032300);
+}
+
+.ticker-sets {
+	position: absolute;
+	top: 140px;
+}
+
+.current-time {
+	font-size: 48px;
+	position: absolute;
+	bottom: 48px;
+	left: 0;
+	right: 0;
+	width: 200px;
+	text-align: center;
+	align-items: center;
+	margin: auto;
+	font-weight: 400;
+	vertical-align: baseline;
+	pointer-events: none;
+	font-variant-numeric: tabular-nums;
+	text-align: right;
+	user-select: none;
+	z-index: 20;
+}
+
+.current-time div {
+	text-align: center;
+}
+
+.current-time span {
+	font-size: 0.5em;
+	margin-left: 0.2em;
+}
+
+.ticker-lines {
+	flex-basis: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: flex-end;
+}
+
+.ticker-lines > div {
+	position: relative;
+	flex: 0 0 1px;
+	width: 1px;
+	height: 50%;
+	background-color: #606a9c;
+	opacity: 1;
+}
+
+.ticker-lines .hour {
+	height: 75%;
+	background-color: #606a9c;
+}
+
+.ticker {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 1400px; /* Match PX_PER_DAY */
+	overflow: hidden;
+}
+
+.ticker:nth-child(1) {
+	transform: translateX(-100%);
+}
+
+.ticker:nth-child(3) {
+	transform: translateX(100%);
 }

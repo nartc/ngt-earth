@@ -31,3 +31,6 @@ export const RETURN_TO_SYNC_MS = 600;
 
 export const DUSK_ANGLE_DEG = 0;
 export const ASPECT = 1.5712;
+
+export const LATITUDE_PRECISION = 1;
+export const LONGITUDE_PRECISION = 1;

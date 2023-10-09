@@ -1,0 +1,18 @@
+<ngt-group [ref]="lightGroupRef">
+	<ngt-directional-light [ref]="lightRef" [intensity]="3" />
+</ngt-group>
+
+<ngt-ambient-light [intensity]="0.5" />
+
+<ngts-orbit-controls
+	[minDistance]="EARTH_RADIUS * 2"
+	[maxDistance]="EARTH_RADIUS * 2.2"
+	[enablePan]="false"
+	[zoomSpeed]="0.04"
+	[autoRotate]="true"
+	[autoRotateSpeed]="0.03"
+	[rotation]="[0, 0, 0]"
+	[target]="[0, 0, 0]"
+	[minPolarAngle]="MathUtils.degToRad(10)"
+	[maxPolarAngle]="MathUtils.degToRad(170)"
+/>

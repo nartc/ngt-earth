@@ -83,10 +83,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "ng-control-flow:build:production"
+							"browserTarget": "ngt-earth:build:production"
 						},
 						"development": {
-							"browserTarget": "ng-control-flow:build:development"
+							"browserTarget": "ngt-earth:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
