@@ -48,6 +48,7 @@
 		"semi": true,
 		"singleQuote": true,
 		"tabWidth": 4,
+		"printWidth": 120,
 		"useTabs": true,
 		"htmlWhitespaceSensitivity": "ignore",
 		"plugins": [

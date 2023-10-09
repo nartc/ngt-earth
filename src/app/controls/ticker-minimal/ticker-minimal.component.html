@@ -2,7 +2,7 @@
 <div class="ticker-cover"></div>
 
 <div class="ticker-sets" #tickerSets>
+	@for (i of [0, 1, 2]; track i) {
 	<app-ticker-line />
-	<app-ticker-line />
-	<app-ticker-line />
+	}
 </div>

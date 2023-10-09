@@ -1,4 +1,11 @@
 <ngt-group>
-	<app-inner />
-	<app-outer />
+	<app-ring [scale]="1.0001" [radiusRatio]="1.01" [coefficient]="0.8" [power]="2" />
+	<app-ring
+		[scale]="1.2"
+		[radiusRatio]="1.02"
+		[coefficient]="0"
+		[power]="2.7"
+		[side]="BackSide"
+		[depthWrite]="false"
+	/>
 </ngt-group>

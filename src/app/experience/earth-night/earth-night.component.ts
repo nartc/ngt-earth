@@ -1,10 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component, computed } from '@angular/core';
-import { NgtArgs, extend, injectNgtStore } from 'angular-three';
+import { NgtArgs, extend } from 'angular-three';
 import { injectNgtsTextureLoader } from 'angular-three-soba/loaders';
-import { MeshBasicMaterial, Vector3, type Texture } from 'three';
+import { MeshBasicMaterial, Vector3 } from 'three';
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla';
 import { EARTH_FRAGMENTS, EARTH_RADIUS, PATHS } from '../../constants';
 import { injectExperienceApi } from '../experience.component';
+import { injectOnTextureLoad } from '../on-texture-load';
 
 extend({ CustomShaderMaterial });
 
@@ -21,21 +22,12 @@ export class EarthNight {
 	EARTH_FRAGMENTS = EARTH_FRAGMENTS;
 
 	private api = injectExperienceApi();
-	private store = injectNgtStore();
-	private getMaxAnisotropy = this.store.get(
-		'gl',
-		'capabilities',
-		'getMaxAnisotropy',
-	);
+	private onLoad = injectOnTextureLoad();
 
 	private v = new Vector3();
 
 	private day = injectNgtsTextureLoader(() => PATHS.earthMap);
-	private night = injectNgtsTextureLoader(() => PATHS.earthNight, {
-		onLoad: (texture) => {
-			(texture as Texture).anisotropy = this.getMaxAnisotropy();
-		},
-	});
+	private night = injectNgtsTextureLoader(() => PATHS.earthNight, { onLoad: this.onLoad });
 
 	materialArgs = computed(() => [
 		{

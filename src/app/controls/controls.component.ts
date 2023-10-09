@@ -1,12 +1,4 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	ElementRef,
-	Input,
-	ViewChild,
-	effect,
-	type Signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild, effect, type Signal } from '@angular/core';
 import { ControlsSharedInputs } from './controls-shared-inputs';
 import { TickerMinimal } from './ticker-minimal/ticker-minimal.component';
 

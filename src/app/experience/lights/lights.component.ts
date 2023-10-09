@@ -1,10 +1,4 @@
-import {
-	CUSTOM_ELEMENTS_SCHEMA,
-	Component,
-	ElementRef,
-	Input,
-	afterNextRender,
-} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Input, afterNextRender } from '@angular/core';
 import { injectBeforeRender, injectNgtRef } from 'angular-three';
 import { NgtsOrbitControls } from 'angular-three-soba/controls';
 import { DirectionalLight, Group, MathUtils } from 'three';
@@ -40,23 +34,14 @@ export class Lights {
 				0,
 			);
 
-			this.lightGroupRef.nativeElement.rotation.y = MathUtils.degToRad(
-				this.sunCoordsRef.nativeElement.lng,
-			);
+			this.lightGroupRef.nativeElement.rotation.y = MathUtils.degToRad(this.sunCoordsRef.nativeElement.lng);
 		});
 
 		injectBeforeRender(() => {
-			const [light, lightGroup] = [
-				this.lightRef.nativeElement,
-				this.lightGroupRef.nativeElement,
-			];
+			const [light, lightGroup] = [this.lightRef.nativeElement, this.lightGroupRef.nativeElement];
 			if (!light || !lightGroup) return;
-			light.position.y =
-				LIGHT_OFFSET * (this.sunCoordsRef.nativeElement.lat / 45);
-			lightGroup.rotation.y = MathUtils.degToRad(
-				this.sunCoordsRef.nativeElement.lng,
-			);
-
+			light.position.y = LIGHT_OFFSET * (this.sunCoordsRef.nativeElement.lat / 45);
+			lightGroup.rotation.y = MathUtils.degToRad(this.sunCoordsRef.nativeElement.lng);
 			light.getWorldPosition(this.api.lightPosition);
 		});
 	}

@@ -2,7 +2,7 @@ import { Component, ElementRef, computed, signal } from '@angular/core';
 import { NgtCanvas } from 'angular-three';
 import { Controls } from './controls/controls.component';
 import { Experience } from './experience/experience.component';
-import { getSunCoords, type LatLngLiteral } from './utils';
+import { applySunCoords, type LatLngLiteral } from './utils';
 
 @Component({
 	selector: 'app-root',
@@ -12,10 +12,7 @@ import { getSunCoords, type LatLngLiteral } from './utils';
 		<div class="wrapper">
 			<div class="scene">
 				<div class="globe">
-					<ngt-canvas
-						[sceneGraph]="scene"
-						[sceneGraphInputs]="{ sunCoordsRef, time }"
-					/>
+					<ngt-canvas [sceneGraph]="scene" [sceneGraphInputs]="{ sunCoordsRef, time }" />
 				</div>
 			</div>
 			<app-controls
@@ -36,9 +33,7 @@ export class AppComponent {
 
 	onChangeOffset = (offset: number) => {
 		this.offset.set(offset);
-		const { lat, lng } = getSunCoords(new Date(Date.now() + offset));
-		this.sunCoordsRef.nativeElement.lat = lat;
-		this.sunCoordsRef.nativeElement.lng = lng;
+		applySunCoords(new Date(Date.now() + offset), this.sunCoordsRef);
 	};
 	offsetRef = new ElementRef<number>(null!);
 	sunCoordsRef = new ElementRef<LatLngLiteral>({ lat: 0, lng: 0 });

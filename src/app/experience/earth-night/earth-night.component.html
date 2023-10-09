@@ -1,9 +1,4 @@
 <ngt-mesh [receiveShadow]="true" [scale]="1.005" [rotation]="[0, Math.PI, 0]">
-	<ngt-sphere-geometry
-		*args="[EARTH_RADIUS, EARTH_FRAGMENTS, EARTH_FRAGMENTS]"
-	/>
-	<ngt-custom-shader-material
-		*args="materialArgs()"
-		(beforeRender)="onBeforeRender($any($event).object)"
-	/>
+	<ngt-sphere-geometry *args="[EARTH_RADIUS, EARTH_FRAGMENTS, EARTH_FRAGMENTS]" />
+	<ngt-custom-shader-material *args="materialArgs()" (beforeRender)="onBeforeRender($any($event).object)" />
 </ngt-mesh>

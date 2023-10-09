@@ -1,0 +1,13 @@
+<ngt-group [scale]="scale">
+	<ngt-mesh>
+		<ngt-icosahedron-geometry *args="[EARTH_RADIUS * radiusRatio, EARTH_FRAGMENTS]" />
+		<ngt-shader-material
+			[vertexShader]="vertexShader"
+			[fragmentShader]="fragmentShader"
+			[side]="side"
+			[depthWrite]="depthWrite"
+			[transparent]="true"
+			[uniforms]="uniforms()"
+		/>
+	</ngt-mesh>
+</ngt-group>

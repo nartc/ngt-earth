@@ -1,8 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
-import { NgtArgs, injectNgtStore } from 'angular-three';
+import { NgtArgs } from 'angular-three';
 import { injectNgtsTextureLoader } from 'angular-three-soba/loaders';
-import type { Texture } from 'three';
 import { EARTH_FRAGMENTS, EARTH_RADIUS, PATHS } from '../../constants';
+import { injectOnTextureLoad } from '../on-texture-load';
 
 @Component({
 	selector: 'app-earth-day',
@@ -16,22 +16,9 @@ export class EarthDay {
 	EARTH_RADIUS = EARTH_RADIUS;
 	EARTH_FRAGMENTS = EARTH_FRAGMENTS;
 
-	private store = injectNgtStore();
-	private getMaxAnisotropy = this.store.get(
-		'gl',
-		'capabilities',
-		'getMaxAnisotropy',
-	);
-	private onTextureLoad = {
-		onLoad: (texture: Texture | Texture[]) => {
-			(texture as Texture).anisotropy = this.getMaxAnisotropy();
-		},
-	};
+	private onLoad = injectOnTextureLoad();
 
-	day = injectNgtsTextureLoader(() => PATHS.earthMap, this.onTextureLoad);
-	bump = injectNgtsTextureLoader(() => PATHS.bumpMap, this.onTextureLoad);
-	specular = injectNgtsTextureLoader(
-		() => PATHS.specularMap,
-		this.onTextureLoad,
-	);
+	day = injectNgtsTextureLoader(() => PATHS.earthMap, { onLoad: this.onLoad });
+	bump = injectNgtsTextureLoader(() => PATHS.bumpMap, { onLoad: this.onLoad });
+	specular = injectNgtsTextureLoader(() => PATHS.specularMap, { onLoad: this.onLoad });
 }

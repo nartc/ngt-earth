@@ -1,10 +1,6 @@
+import type { ElementRef } from '@angular/core';
 import * as SunCalc from 'suncalc';
-import {
-	LATITUDE_PRECISION,
-	LONGITUDE_PRECISION,
-	MS_PER_DAY,
-	PX_PER_DAY,
-} from './constants';
+import { LATITUDE_PRECISION, LONGITUDE_PRECISION, MS_PER_DAY, PX_PER_DAY } from './constants';
 
 export const pxToMs = (px: number) => {
 	return (px / PX_PER_DAY) * MS_PER_DAY;
@@ -19,7 +15,7 @@ export type LatLngLiteral = {
 	lng: number;
 };
 
-export const getSunCoords = (date: Date): LatLngLiteral => {
+export const applySunCoords = (date: Date, ref: ElementRef<LatLngLiteral>) => {
 	let coords, lng, peak, result, lat;
 
 	result = { lat: 0, lng: 0 };
@@ -43,5 +39,6 @@ export const getSunCoords = (date: Date): LatLngLiteral => {
 		lng += LONGITUDE_PRECISION;
 	}
 
-	return result;
+	ref.nativeElement.lat = result.lat;
+	ref.nativeElement.lng = result.lng;
 };

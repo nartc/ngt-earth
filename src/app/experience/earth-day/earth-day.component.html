@@ -1,7 +1,5 @@
 <ngt-mesh [castShadow]="true" [scale]="0.999" [rotation]="[0, Math.PI, 0]">
-	<ngt-sphere-geometry
-		*args="[EARTH_RADIUS, EARTH_FRAGMENTS, EARTH_FRAGMENTS]"
-	/>
+	<ngt-sphere-geometry *args="[EARTH_RADIUS, EARTH_FRAGMENTS, EARTH_FRAGMENTS]" />
 	<ngt-mesh-phong-material
 		[bumpScale]="0.75"
 		[shininess]="70"

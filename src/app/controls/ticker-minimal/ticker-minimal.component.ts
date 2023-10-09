@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
-import { injectDrag, type NgxDragState } from 'ngxtension/gestures';
+import { injectDrag } from 'ngxtension/gestures';
 import { PX_PER_DAY } from '../../constants';
 import { msToPx, pxToMs } from '../../utils';
 import { ControlsSharedInputs } from '../controls-shared-inputs';
@@ -20,19 +20,18 @@ export class TickerMinimal {
 		const sharedInputs = inject(ControlsSharedInputs);
 
 		injectDrag(
-			({ down, movement: [mx] }: NgxDragState) => {
+			({ down, movement: [mx] }) => {
+				const { previousOffsetRef, onChangeOffset } = sharedInputs;
+
 				const deltaMs = pxToMs(mx);
-				const ms =
-					deltaMs + sharedInputs.previousOffsetRef.nativeElement;
+				const ms = deltaMs + previousOffsetRef.nativeElement;
 				const deltaPx = msToPx(ms);
 
-				this.tickerSets.nativeElement.style.transform = `translateX(${
-					deltaPx % PX_PER_DAY
-				}px)`;
-				sharedInputs.onChangeOffset(-ms);
+				this.tickerSets.nativeElement.style.transform = `translateX(${deltaPx % PX_PER_DAY}px)`;
+				onChangeOffset(-ms);
 
 				if (!down) {
-					sharedInputs.previousOffsetRef.nativeElement += deltaMs;
+					previousOffsetRef.nativeElement += deltaMs;
 				}
 			},
 			{ zoneless: true },
