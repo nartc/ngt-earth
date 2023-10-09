@@ -1,11 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component, computed } from '@angular/core';
 import { NgtArgs, extend } from 'angular-three';
-import { injectNgtsTextureLoader } from 'angular-three-soba/loaders';
 import { MeshBasicMaterial, Vector3 } from 'three';
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla';
 import { EARTH_FRAGMENTS, EARTH_RADIUS, PATHS } from '../../constants';
-import { injectExperienceApi } from '../experience.component';
-import { injectOnTextureLoad } from '../on-texture-load';
+import { injectLightPosition } from '../experience.component';
+import { injectTexture } from '../texture';
 
 extend({ CustomShaderMaterial });
 
@@ -21,13 +20,12 @@ export class EarthNight {
 	EARTH_RADIUS = EARTH_RADIUS;
 	EARTH_FRAGMENTS = EARTH_FRAGMENTS;
 
-	private api = injectExperienceApi();
-	private onLoad = injectOnTextureLoad();
+	private lightPosition = injectLightPosition();
 
 	private v = new Vector3();
 
-	private day = injectNgtsTextureLoader(() => PATHS.earthMap);
-	private night = injectNgtsTextureLoader(() => PATHS.earthNight, { onLoad: this.onLoad });
+	private day = injectTexture(() => PATHS.earthMap, false);
+	private night = injectTexture(() => PATHS.earthNight);
 
 	materialArgs = computed(() => [
 		{
@@ -73,6 +71,6 @@ export class EarthNight {
 	]);
 
 	onBeforeRender(material: CustomShaderMaterial) {
-		material.uniforms['uLight'].value = this.api.lightPosition;
+		material.uniforms['uLight'].value = this.lightPosition;
 	}
 }

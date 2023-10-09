@@ -11,15 +11,13 @@ import { Lights } from './lights/lights.component';
 
 extend(THREE);
 
-export const [injectExperienceApi, provideExperienceApi] = createInjectionToken(() => ({
-	lightPosition: new THREE.Vector3(),
-}));
+export const [injectLightPosition, provideLightPosition] = createInjectionToken(() => new THREE.Vector3());
 
 @Component({
 	standalone: true,
 	templateUrl: './experience.component.html',
 	imports: [EarthDay, Lights, Clouds, Halo, EarthNight],
-	providers: [provideExperienceApi()],
+	providers: [provideLightPosition()],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class Experience {

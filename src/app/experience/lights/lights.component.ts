@@ -4,7 +4,7 @@ import { NgtsOrbitControls } from 'angular-three-soba/controls';
 import { DirectionalLight, Group, MathUtils } from 'three';
 import { EARTH_RADIUS } from '../../constants';
 import type { LatLngLiteral } from '../../utils';
-import { injectExperienceApi } from '../experience.component';
+import { injectLightPosition } from '../experience.component';
 
 const LIGHT_OFFSET = EARTH_RADIUS * 2;
 
@@ -24,7 +24,7 @@ export class Lights {
 	lightGroupRef = injectNgtRef<Group>();
 	lightRef = injectNgtRef<DirectionalLight>();
 
-	private api = injectExperienceApi();
+	private lightPosition = injectLightPosition();
 
 	constructor() {
 		afterNextRender(() => {
@@ -42,7 +42,7 @@ export class Lights {
 			if (!light || !lightGroup) return;
 			light.position.y = LIGHT_OFFSET * (this.sunCoordsRef.nativeElement.lat / 45);
 			lightGroup.rotation.y = MathUtils.degToRad(this.sunCoordsRef.nativeElement.lng);
-			light.getWorldPosition(this.api.lightPosition);
+			light.getWorldPosition(this.lightPosition);
 		});
 	}
 }

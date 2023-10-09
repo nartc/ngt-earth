@@ -4975,10 +4975,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngxtension@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/ngxtension/-/ngxtension-0.5.0.tgz#97f0dba10402bfc37ec00f8c7175887bdbab246e"
-  integrity sha512-guPXJ7Ph3SWibUjqdckM9zcObmkMUwT4lJ0PM5LSX40YY07/cF9eSk8i94TwHDr7rvgNz9PL19MO7lKyaprclA==
+ngxtension@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/ngxtension/-/ngxtension-0.6.1.tgz#0a4e64c2247d0a20fb415c2f08ed748a49a51075"
+  integrity sha512-63iJAvq8SL/MBSJmcDSHOm8tNIm8hp1Xc1Nnmwp36wUOZH1y4TrTuciAmlDHKbkAkZ8c4EfEDJsCgBO3aeMRWQ==
   dependencies:
     tslib "^2.3.0"
 
